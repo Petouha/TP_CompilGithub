@@ -1,0 +1,7 @@
+LANGAGE miniAlgo
+VAR
+X:INT;
+Y = -7: CONST INT;
+BEGIN
+X=-6--6;
+END
