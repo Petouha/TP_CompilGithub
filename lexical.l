@@ -5,14 +5,13 @@ extern int numLigne;
 %}
 lettre [a-zA-Z]
 chiffre [0-9]
-symbole chiffre | lettre 
 idf {lettre}({lettre}|{chiffre}|_({chiffre}|{lettre}))*
 L "LANGAGE"
-cst [+-]([1-9][0-9]*|0)
+cst {chiffre}+
 /*Basically, si je mets la possibilité de faire un chiffre avec le moins, 
-ça va poser problème avec l'instruction li fiha moins.
-exemple : X=5*6-2 hadi au lieu de la voir comme un {6 "moins" 2}, ça
-sera 6(-2) sans opérateur*/
+/*ça va poser problème avec l'instruction li fiha moins.
+/*exemple : X=5*6-2 hadi au lieu de la voir comme un {6 "moins" 2}, ça
+/*sera 6(-2) sans opérateur*/
 %%
 {L} return mc_langage;
 VAR return mc_var;
