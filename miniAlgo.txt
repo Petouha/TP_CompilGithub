@@ -9,6 +9,7 @@ VAR
 Y:FLOAT;
 BEGIN
 Y=8;
+X=5;
 RETURN Y;
 END
 
