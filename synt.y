@@ -1,14 +1,23 @@
 %{
 int numLigne=1;
+int opr=0;
 %}
 
-%token idf mc_langage mc_var dp pvg mc_int mc_float mc_bool vg mc_begin mc_end aff cst mc_const mc_if pt plus err mult division moins
-par_ouvrante par_fermante sup inf mc_while;
+%union{
+int entier;
+}
+
+%token idf mc_langage mc_var dp pvg mc_int mc_float mc_bool vg mc_begin mc_end aff <entier>cst mc_const mc_if pt plus err mult division moins
+par_ouvrante par_fermante sup inf mc_while mc_func mc_return;
 %%
-S: Commentaire | mc_langage idf mc_var ListeDec mc_begin ListeInsts mc_end {printf("syntaxe correcte\n"); YYACCEPT;}
+S:mc_langage idf mc_var ListeDec ListeFonction mc_begin ListeInsts mc_end {printf("syntaxe correcte\n"); YYACCEPT;}
 ;
 ListeDec: Dec ListeDec
 	  |Dec
+;
+ListeFonction: Fonction | ListeFonction
+;
+Fonction: Type mc_func idf mc_var ListeDec mc_begin ListeInsts mc_return idf pvg mc_end
 ;
 Dec :DecSimple | DecConst
 ;
@@ -30,13 +39,13 @@ ListeIdfs:  idf vg ListeIdfs
 ListeInsts : INST ListeInsts
 	    | INST
 ;
-INST: Affectation | Condition_IF | Condition_WHILE/*ajouter après le while et le if ..*/
+INST: Affectation | Condition_IF | Condition_WHILE |/*ajouter après le while et le if ..*/
 ;
 Affectation : idf aff EXP pvg 
 ;
-EXP: cst | idf OPERATEUR EXP | cst OPERATEUR EXP | idf
+EXP: idf | idf OPERATEUR EXP | cst OPERATEUR EXP | cst
 ;
-OPERATEUR: plus | mult | division | moins
+OPERATEUR: plus | | division | moins 
 ;
 Condition_IF: mc_if par_ouvrante COND par_fermante mc_begin ListeInsts mc_end
 ;

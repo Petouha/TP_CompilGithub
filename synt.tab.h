@@ -79,14 +79,25 @@ extern int yydebug;
     par_fermante = 280,            /* par_fermante  */
     sup = 281,                     /* sup  */
     inf = 282,                     /* inf  */
-    mc_while = 283                 /* mc_while  */
+    mc_while = 283,                /* mc_while  */
+    mc_func = 284,                 /* mc_func  */
+    mc_return = 285                /* mc_return  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 6 "synt.y"
+
+int entier;
+
+#line 98 "synt.tab.h"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

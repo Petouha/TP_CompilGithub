@@ -1,7 +1,21 @@
 LANGAGE miniAlgo
+
 VAR
-X:INT;
-Y = -7: CONST INT;
+X,P,K:INT;
+Y = 7: CONST INT;
+
+INT FUNCTION max
+VAR
+Y:FLOAT;
 BEGIN
-X=-6--6;
+Y=8;
+RETURN Y;
+END
+
+BEGIN
+X=6/0;
+IF(4+6 > 7)
+BEGIN
+X=5;
+END
 END

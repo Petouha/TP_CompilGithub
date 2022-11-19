@@ -2,6 +2,7 @@
 #include "synt.tab.h"
 #include <stdio.h>
 extern int numLigne;
+extern YYSTYPE yylval;
 %}
 lettre [a-zA-Z]
 chiffre [0-9]
@@ -23,6 +24,8 @@ END return mc_end;
 CONST return mc_const;
 IF return mc_if;
 WHILE return mc_while;
+FUNCTION return mc_func;
+RETURN return mc_return;
 {idf} return idf;
 {cst} return cst;
 : return dp;
