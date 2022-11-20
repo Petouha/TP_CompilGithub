@@ -10,14 +10,13 @@ int entier;
 %token idf mc_langage mc_var dp pvg mc_int mc_float mc_bool vg mc_begin mc_end aff <entier>cst mc_const mc_if pt plus err mult division moins
 par_ouvrante par_fermante sup inf mc_while mc_func mc_return;
 %%
+//axiome principale S
 S:mc_langage idf mc_var ListeDec ListeFonction mc_begin ListeInsts mc_end {printf("syntaxe correcte\n"); YYACCEPT;}
 ;
-ListeDec: Dec ListeDec
-	  |Dec
-;
-ListeFonction: Fonction ListeFonction | Fonction |
-;
-Fonction: Type mc_func idf mc_var ListeDec mc_begin ListeInsts mc_return idf pvg mc_end
+
+//Les déclarations de variables / constantes
+
+ListeDec: Dec ListeDec | Dec
 ;
 Dec :DecSimple | DecConst
 ;
@@ -29,34 +28,51 @@ ConstInt: idf aff cst dp mc_const mc_int pvg
 ;
 ConstFloat : idf aff cst pt cst dp mc_const mc_float pvg
 ;
-Type: mc_int
-      |mc_float
-      |mc_bool
+
+//les déclarations des fonctions
+
+ListeFonction: Fonction ListeFonction | Fonction | //epsilon
 ;
-ListeIdfs:  idf vg ListeIdfs
-	    | idf
+Fonction: Type mc_func idf mc_var ListeDec mc_begin ListeInsts mc_return idf pvg mc_end
 ;
-ListeInsts : INST ListeInsts
-	    | INST
+
+// les types
+Type: mc_int | mc_float |mc_bool
+;
+
+//les variables 
+ListeIdfs:  idf vg ListeIdfs | idf
+;
+
+//les instructions
+ListeInsts : INST ListeInsts | INST
 ;
 INST: Affectation | Condition_IF | Condition_WHILE |/*ajouter après le while et le if ..*/
 ;
+
 Affectation : idf aff EXP pvg 
 ;
+
+//expressions arithmétiques
 EXP: idf | idf OPERATEUR EXP | cst OPERATEUR EXP | cst
 ;
-OPERATEUR: plus | | division | moins 
+OPERATEUR: plus | mult | division | moins 
 ;
+
+//boucles itératives
 Condition_IF: mc_if par_ouvrante COND par_fermante mc_begin ListeInsts mc_end
 ;
+
 Condition_WHILE: mc_while par_ouvrante COND par_fermante mc_begin ListeInsts mc_end
 ;
+
+//les conditions
 COND: EXP OPERATEUR_RELATIONEL EXP
 ;
-/*EXP2:  cst | idf OPERATEUR EXP2 | cst OPERATEUR EXP2 | idf
-;*/
 OPERATEUR_RELATIONEL: aff aff | sup | inf | inf sup | sup aff | inf aff
 ;
+
+
 %%
 main()
 {
