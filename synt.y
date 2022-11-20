@@ -15,7 +15,7 @@ S:mc_langage idf mc_var ListeDec ListeFonction mc_begin ListeInsts mc_end {print
 ListeDec: Dec ListeDec
 	  |Dec
 ;
-ListeFonction: Fonction ListeFonction | Fonction
+ListeFonction: Fonction ListeFonction | Fonction |
 ;
 Fonction: Type mc_func idf mc_var ListeDec mc_begin ListeInsts mc_return idf pvg mc_end
 ;

@@ -849,101 +849,103 @@ return mc_return;
 case 13:
 YY_RULE_SETUP
 #line 29 "lexical.l"
-return idf;
+{if (yyleng <=12) return idf ;
+      else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
+        }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 30 "lexical.l"
+#line 33 "lexical.l"
 return cst;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 31 "lexical.l"
+#line 34 "lexical.l"
 return dp;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 32 "lexical.l"
+#line 35 "lexical.l"
 return pvg;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 33 "lexical.l"
+#line 36 "lexical.l"
 return vg;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 34 "lexical.l"
+#line 37 "lexical.l"
 return aff;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 35 "lexical.l"
+#line 38 "lexical.l"
 return pt;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 36 "lexical.l"
+#line 39 "lexical.l"
 return plus;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 37 "lexical.l"
+#line 40 "lexical.l"
 return mult;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 38 "lexical.l"
+#line 41 "lexical.l"
 return division;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 39 "lexical.l"
+#line 42 "lexical.l"
 return moins;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 40 "lexical.l"
+#line 43 "lexical.l"
 return par_ouvrante;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 41 "lexical.l"
+#line 44 "lexical.l"
 return par_fermante;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 42 "lexical.l"
+#line 45 "lexical.l"
 return sup;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 43 "lexical.l"
+#line 46 "lexical.l"
 return inf;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 44 "lexical.l"
+#line 47 "lexical.l"
 
 	YY_BREAK
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 45 "lexical.l"
+#line 48 "lexical.l"
 numLigne++;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 46 "lexical.l"
+#line 49 "lexical.l"
 {printf("Erreur Lexical à la ligne %d sur l'entite %s\n",numLigne,yytext);
 return err;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 49 "lexical.l"
+#line 52 "lexical.l"
 ECHO;
 	YY_BREAK
-#line 947 "lex.yy.c"
+#line 949 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1948,4 +1950,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 49 "lexical.l"
+#line 52 "lexical.l"

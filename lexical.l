@@ -26,7 +26,10 @@ IF return mc_if;
 WHILE return mc_while;
 FUNCTION return mc_func;
 RETURN return mc_return;
-{idf} return idf;
+{idf} {if (yyleng <=12) return idf ;
+      else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
+        }
+
 {cst} return cst;
 : return dp;
 ; return pvg;
