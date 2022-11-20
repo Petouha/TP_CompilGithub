@@ -30,7 +30,9 @@ RETURN return mc_return;
       else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
         }
 
-{cst} return cst;
+{cst} { yylval.entier=atoi(yytext);
+        return cst;
+		}
 : return dp;
 ; return pvg;
 , return vg;

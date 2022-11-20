@@ -54,9 +54,14 @@ Affectation : idf aff EXP pvg
 ;
 
 //expressions arithmétiques
-EXP: idf | idf OPERATEUR EXP | cst OPERATEUR EXP | cst
+EXP: idf | idf OPERATEUR EXP | cst OPERATEUR EXP |cst
+	 				{if($1==0 && opr==3) 
+ 					{	printf("divison par 0\n");
+				
+					}
+					}
 ;
-OPERATEUR: plus | mult | division | moins 
+OPERATEUR: plus {opr=1;} | mult {opr=2;} | division {opr=3;} | moins {opr=4;}
 ;
 
 //boucles itératives
