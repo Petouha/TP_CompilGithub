@@ -1400,6 +1400,7 @@ main()
 {
 printf("C'est le compilateur du langage miniAlgo:\n");
 yyparse();
+afficher();
 }
 yywrap()
 {}

@@ -1,6 +1,7 @@
 %{
 #include "synt.tab.h"
 #include <stdio.h>
+#include"lib.h"
 extern int numLigne;
 extern YYSTYPE yylval;
 %}
@@ -16,9 +17,9 @@ cst {chiffre}+
 %%
 {L} return mc_langage;
 VAR return mc_var;
-INT {yylval.str=strdup(yytext); mc_int;}
-FLOAT  {yylval.str=strdup(yytext); mc_float;}
-BOOL return mc_bool;
+INT {yylval.str=strdup(yytext); return mc_int;}
+FLOAT  {yylval.str=strdup(yytext); return mc_float;}
+BOOL {yylval.str=strdup(yytext); return mc_bool;}
 BEGIN return mc_begin;
 END return mc_end;
 CONST return mc_const;
@@ -28,7 +29,7 @@ FUNCTION return mc_func;
 RETURN return mc_return;
 {idf} {if (yyleng <=12){ 
         yylval.str=strdup(yytext);
-        // inserer(yytext,"idf");
+        inserer(yytext,"idf");
         return idf ;}
 
       else printf ("erreur lexicale : idf %s trop long\n",yytext) ;

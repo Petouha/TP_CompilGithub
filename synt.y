@@ -1,6 +1,7 @@
 %{
 int numLigne=1;
 int opr=0;
+char sauvType[20];
 %}
 
 %union{
@@ -8,7 +9,7 @@ int entier;
 char* str;
 }
 
-%token idf mc_langage mc_var dp pvg mc_int mc_float mc_bool vg mc_begin mc_end aff <entier>cst mc_const mc_if pt plus err mult division moins
+%token <str>idf mc_langage mc_var dp pvg <str>mc_int <str>mc_float mc_bool vg mc_begin mc_end aff <entier>cst mc_const mc_if pt plus err mult division moins
 par_ouvrante par_fermante sup inf mc_while mc_func mc_return;
 %%
 //axiome principale S
@@ -38,11 +39,15 @@ Fonction: Type mc_func idf mc_var ListeDec mc_begin ListeInsts mc_return idf pvg
 ;
 
 // les types
-Type: mc_int | mc_float |mc_bool
+Type: 		mc_int {strcpy(sauvType,$1);}
+ 			| mc_float {strcpy(sauvType,$1);}
+ 		 	| mc_bool {strcpy(sauvType,$1);}
+
 ;
 
 //les variables 
-ListeIdfs:  idf vg ListeIdfs | idf
+ListeIdfs:  idf vg ListeIdfs {}
+			 | idf
 ;
 
 //les instructions
@@ -84,6 +89,7 @@ main()
 {
 printf("C'est le compilateur du langage miniAlgo:\n");
 yyparse();
+afficher();
 }
 yywrap()
 {}
