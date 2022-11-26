@@ -1,6 +1,6 @@
 LANGAGE miniAlgo
 VAR
-X1:INT;
+X,M:INT;
 BEGIN
 X=5/0;
 END

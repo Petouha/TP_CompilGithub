@@ -540,11 +540,11 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    14,    14,    19,    19,    21,    21,    23,    25,    25,
-      27,    29,    34,    34,    34,    36,    40,    40,    40,    44,
-      44,    48,    48,    50,    50,    50,    50,    53,    57,    57,
-      57,    57,    64,    64,    64,    64,    68,    71,    75,    77,
-      77,    77,    77,    77,    77
+       0,    15,    15,    20,    20,    22,    22,    24,    26,    26,
+      28,    30,    35,    35,    35,    37,    41,    41,    41,    45,
+      45,    49,    49,    51,    51,    51,    51,    54,    58,    58,
+      58,    58,    65,    65,    65,    65,    69,    72,    76,    78,
+      78,    78,    78,    78,    78
 };
 #endif
 
@@ -1161,41 +1161,41 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* S: mc_langage idf mc_var ListeDec ListeFonction mc_begin ListeInsts mc_end  */
-#line 14 "synt.y"
+#line 15 "synt.y"
                                                                           {printf("syntaxe correcte\n"); YYACCEPT;}
 #line 1167 "synt.tab.c"
     break;
 
   case 31: /* EXP: cst  */
-#line 58 "synt.y"
+#line 59 "synt.y"
                                         {if((yyvsp[0].entier)==0 && opr==3) 
  					{	printf("divison par 0\n");
-				
+					return err;
 					}
 					}
 #line 1177 "synt.tab.c"
     break;
 
   case 32: /* OPERATEUR: plus  */
-#line 64 "synt.y"
+#line 65 "synt.y"
                 {opr=1;}
 #line 1183 "synt.tab.c"
     break;
 
   case 33: /* OPERATEUR: mult  */
-#line 64 "synt.y"
+#line 65 "synt.y"
                                 {opr=2;}
 #line 1189 "synt.tab.c"
     break;
 
   case 34: /* OPERATEUR: division  */
-#line 64 "synt.y"
+#line 65 "synt.y"
                                                     {opr=3;}
 #line 1195 "synt.tab.c"
     break;
 
   case 35: /* OPERATEUR: moins  */
-#line 64 "synt.y"
+#line 65 "synt.y"
                                                                      {opr=4;}
 #line 1201 "synt.tab.c"
     break;
@@ -1394,7 +1394,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 81 "synt.y"
+#line 82 "synt.y"
 
 main()
 {

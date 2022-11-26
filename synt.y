@@ -5,6 +5,7 @@ int opr=0;
 
 %union{
 int entier;
+char* str;
 }
 
 %token idf mc_langage mc_var dp pvg mc_int mc_float mc_bool vg mc_begin mc_end aff <entier>cst mc_const mc_if pt plus err mult division moins
@@ -57,7 +58,7 @@ Affectation : idf aff EXP pvg
 EXP: idf | idf OPERATEUR EXP | cst OPERATEUR EXP |cst
 	 				{if($1==0 && opr==3) 
  					{	printf("divison par 0\n");
-				
+					return err;
 					}
 					}
 ;

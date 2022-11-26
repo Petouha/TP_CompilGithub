@@ -16,8 +16,8 @@ cst {chiffre}+
 %%
 {L} return mc_langage;
 VAR return mc_var;
-INT return mc_int;
-FLOAT return mc_float;
+INT {yylval.str=strdup(yytext); mc_int;}
+FLOAT  {yylval.str=strdup(yytext); mc_float;}
 BOOL return mc_bool;
 BEGIN return mc_begin;
 END return mc_end;
@@ -26,7 +26,11 @@ IF return mc_if;
 WHILE return mc_while;
 FUNCTION return mc_func;
 RETURN return mc_return;
-{idf} {if (yyleng <=12) return idf ;
+{idf} {if (yyleng <=12){ 
+        yylval.str=strdup(yytext);
+        // inserer(yytext,"idf");
+        return idf ;}
+
       else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
         }
 
