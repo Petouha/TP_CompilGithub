@@ -72,8 +72,9 @@
 int numLigne=1;
 int opr=0;
 char sauvType[20];
+char nomIdf[20];
 
-#line 77 "synt.tab.c"
+#line 78 "synt.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -541,11 +542,11 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    17,    17,    22,    22,    24,    24,    26,    28,    28,
-      30,    32,    37,    37,    37,    39,    43,    44,    45,    50,
-      51,    55,    55,    57,    57,    57,    57,    60,    64,    64,
-      64,    64,    71,    71,    71,    71,    75,    78,    82,    84,
-      84,    84,    84,    84,    84
+       0,    17,    17,    22,    22,    24,    24,    26,    35,    35,
+      37,    39,    44,    44,    44,    46,    50,    51,    52,    57,
+      58,    62,    62,    64,    64,    64,    64,    67,    71,    71,
+      71,    71,    78,    78,    78,    78,    82,    85,    89,    91,
+      91,    91,    91,    91,    91
 };
 #endif
 
@@ -1164,69 +1165,81 @@ yyreduce:
   case 2: /* S: mc_langage idf mc_var ListeDec ListeFonction mc_begin ListeInsts mc_end  */
 #line 17 "synt.y"
                                                                           {printf("syntaxe correcte\n"); YYACCEPT;}
-#line 1168 "synt.tab.c"
+#line 1169 "synt.tab.c"
+    break;
+
+  case 7: /* DecSimple: ListeIdfs dp Type pvg  */
+#line 27 "synt.y"
+{
+	if(doubleDec(nomIdf)==0)
+	{
+		insererType(nomIdf,sauvType);
+	}
+	else printf("erreur sémantique car double declaration de %s à la ligne %d\n",nomIdf,numLigne);
+}
+#line 1181 "synt.tab.c"
     break;
 
   case 16: /* Type: mc_int  */
-#line 43 "synt.y"
+#line 50 "synt.y"
                        {strcpy(sauvType,(yyvsp[0].str));}
-#line 1174 "synt.tab.c"
+#line 1187 "synt.tab.c"
     break;
 
   case 17: /* Type: mc_float  */
-#line 44 "synt.y"
+#line 51 "synt.y"
                                    {strcpy(sauvType,(yyvsp[0].str));}
-#line 1180 "synt.tab.c"
+#line 1193 "synt.tab.c"
     break;
 
   case 18: /* Type: mc_bool  */
-#line 45 "synt.y"
+#line 52 "synt.y"
                                   {strcpy(sauvType,(yyvsp[0].str));}
-#line 1186 "synt.tab.c"
+#line 1199 "synt.tab.c"
     break;
 
-  case 19: /* ListeIdfs: idf vg ListeIdfs  */
-#line 50 "synt.y"
-                             {}
-#line 1192 "synt.tab.c"
+  case 20: /* ListeIdfs: idf  */
+#line 58 "synt.y"
+                               {strcpy(nomIdf,(yyvsp[0].str));}
+#line 1205 "synt.tab.c"
     break;
 
   case 31: /* EXP: cst  */
-#line 65 "synt.y"
+#line 72 "synt.y"
                                         {if((yyvsp[0].entier)==0 && opr==3) 
  					{	printf("divison par 0\n");
 					return err;
 					}
 					}
-#line 1202 "synt.tab.c"
+#line 1215 "synt.tab.c"
     break;
 
   case 32: /* OPERATEUR: plus  */
-#line 71 "synt.y"
+#line 78 "synt.y"
                 {opr=1;}
-#line 1208 "synt.tab.c"
+#line 1221 "synt.tab.c"
     break;
 
   case 33: /* OPERATEUR: mult  */
-#line 71 "synt.y"
+#line 78 "synt.y"
                                 {opr=2;}
-#line 1214 "synt.tab.c"
+#line 1227 "synt.tab.c"
     break;
 
   case 34: /* OPERATEUR: division  */
-#line 71 "synt.y"
+#line 78 "synt.y"
                                                     {opr=3;}
-#line 1220 "synt.tab.c"
+#line 1233 "synt.tab.c"
     break;
 
   case 35: /* OPERATEUR: moins  */
-#line 71 "synt.y"
+#line 78 "synt.y"
                                                                      {opr=4;}
-#line 1226 "synt.tab.c"
+#line 1239 "synt.tab.c"
     break;
 
 
-#line 1230 "synt.tab.c"
+#line 1243 "synt.tab.c"
 
       default: break;
     }
@@ -1419,7 +1432,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 88 "synt.y"
+#line 95 "synt.y"
 
 main()
 {

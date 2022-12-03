@@ -851,12 +851,12 @@ case 13:
 YY_RULE_SETUP
 #line 30 "lexical.l"
 {if (yyleng <=12){ 
-        yylval.str=strdup(yytext);
-        yylval.str_type=strdup(sauvType);
-        inserer(yytext,"idf",str_type);
-        return idf ;}
-
-      else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
+                yylval.str=strdup(yytext);
+                inserer(yytext,"idf");
+                return idf ;
+        }
+        else {printf ("erreur lexicale à la ligne %d : idf %s trop long car %d > 12\n",numLigne,yytext,yyleng);
+                return err;}
         }
 	YY_BREAK
 case 14:

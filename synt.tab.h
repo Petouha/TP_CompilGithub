@@ -90,13 +90,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 7 "synt.y"
+#line 8 "synt.y"
 
 int entier;
 char* str
-char* str_type;
 
-#line 100 "synt.tab.h"
+#line 99 "synt.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

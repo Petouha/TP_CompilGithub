@@ -28,11 +28,12 @@ WHILE return mc_while;
 FUNCTION return mc_func;
 RETURN return mc_return;
 {idf} {if (yyleng <=12){ 
-        yylval.str=strdup(yytext);
-        inserer(yytext,"idf",str_type);
-        return idf ;}
-
-      else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
+                yylval.str=strdup(yytext);
+                inserer(yytext,"idf");
+                return idf ;
+        }
+        else {printf ("erreur lexicale à la ligne %d : idf %s trop long car %d > 12\n",numLigne,yytext,yyleng);
+                return err;}
         }
 
 {cst} { yylval.entier=atoi(yytext);

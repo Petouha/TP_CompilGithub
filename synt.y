@@ -2,6 +2,7 @@
 int numLigne=1;
 int opr=0;
 char sauvType[20];
+char nomIdf[20];
 %}
 
 %union{
@@ -23,6 +24,13 @@ ListeDec: Dec ListeDec | Dec
 Dec :DecSimple | DecConst
 ;
 DecSimple: ListeIdfs dp Type pvg
+{
+	if(doubleDec(nomIdf)==0)
+	{
+		insererType(nomIdf,sauvType);
+	}
+	else printf("erreur sémantique car double declaration de %s à la ligne %d\n",nomIdf,numLigne);
+}
 ;
 DecConst: ConstInt | ConstFloat /* essayer de faire une liste de DecConst*/
 ;
@@ -46,8 +54,8 @@ Type: 		mc_int {strcpy(sauvType,$1);}
 ;
 
 //les variables 
-ListeIdfs:  idf vg ListeIdfs {}
-			 | idf
+ListeIdfs:  idf vg ListeIdfs 
+			 | idf {strcpy(nomIdf,$1);}
 ;
 
 //les instructions
