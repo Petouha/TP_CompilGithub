@@ -1,6 +1,8 @@
 LANGAGE miniAlgo
 VAR
-X,M,X:INT;
+dz:INT;
+Y: FLOAT;
+E : BOOL;
 BEGIN
 X=5;
 X=6;
