@@ -5,6 +5,7 @@ typedef struct
     char nomEntite[20];
     char codeEntite[50];
     char typeEntite[20];    
+    int constant;
 }TypeTS;
 
 TypeTS ts[100];
@@ -38,12 +39,12 @@ void afficher ()
 {
 printf("\n/***************Table des symboles ******************/\n");
 printf("______________________________________\n");
-printf("\t| nomEntite |  codeEntite \n");
+printf("\t| nomEntite |  codeEntite | TypeEntite \n");
 printf("______________________________________\n");
 int i=0;
   while(i<cptTS)
   {
-    printf("\t|%10s |%12s  |\n",ts[i].nomEntite,ts[i].codeEntite);
+    printf("\t|%10s |%12s  |%10s \n",ts[i].nomEntite,ts[i].codeEntite, ts[i].typeEntite);
      i++;
    }
 }

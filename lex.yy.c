@@ -810,7 +810,7 @@ YY_RULE_SETUP
 case 5:
 YY_RULE_SETUP
 #line 22 "lexical.l"
-return mc_bool;
+{yylval.str=strdup(yytext); return mc_bool;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
@@ -852,7 +852,7 @@ YY_RULE_SETUP
 #line 30 "lexical.l"
 {if (yyleng <=12){ 
         yylval.str=strdup(yytext);
-        inserer(yytext,"idf");
+        inserer(yytext,"idf",sauvType);
         return idf ;}
 
       else printf ("erreur lexicale : idf %s trop long\n",yytext) ;
