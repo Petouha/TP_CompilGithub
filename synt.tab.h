@@ -93,9 +93,10 @@ union YYSTYPE
 #line 7 "synt.y"
 
 int entier;
-char* str;
+char* str
+char* str_type;
 
-#line 99 "synt.tab.h"
+#line 100 "synt.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

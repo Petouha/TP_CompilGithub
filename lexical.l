@@ -29,7 +29,7 @@ FUNCTION return mc_func;
 RETURN return mc_return;
 {idf} {if (yyleng <=12){ 
         yylval.str=strdup(yytext);
-        inserer(yytext,"idf",sauvType);
+        inserer(yytext,"idf",str_type);
         return idf ;}
 
       else printf ("erreur lexicale : idf %s trop long\n",yytext) ;

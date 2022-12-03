@@ -541,11 +541,11 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    16,    16,    21,    21,    23,    23,    25,    27,    27,
-      29,    31,    36,    36,    36,    38,    42,    43,    44,    49,
-      50,    54,    54,    56,    56,    56,    56,    59,    63,    63,
-      63,    63,    70,    70,    70,    70,    74,    77,    81,    83,
-      83,    83,    83,    83,    83
+       0,    17,    17,    22,    22,    24,    24,    26,    28,    28,
+      30,    32,    37,    37,    37,    39,    43,    44,    45,    50,
+      51,    55,    55,    57,    57,    57,    57,    60,    64,    64,
+      64,    64,    71,    71,    71,    71,    75,    78,    82,    84,
+      84,    84,    84,    84,    84
 };
 #endif
 
@@ -1162,37 +1162,37 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* S: mc_langage idf mc_var ListeDec ListeFonction mc_begin ListeInsts mc_end  */
-#line 16 "synt.y"
+#line 17 "synt.y"
                                                                           {printf("syntaxe correcte\n"); YYACCEPT;}
 #line 1168 "synt.tab.c"
     break;
 
   case 16: /* Type: mc_int  */
-#line 42 "synt.y"
+#line 43 "synt.y"
                        {strcpy(sauvType,(yyvsp[0].str));}
 #line 1174 "synt.tab.c"
     break;
 
   case 17: /* Type: mc_float  */
-#line 43 "synt.y"
+#line 44 "synt.y"
                                    {strcpy(sauvType,(yyvsp[0].str));}
 #line 1180 "synt.tab.c"
     break;
 
   case 18: /* Type: mc_bool  */
-#line 44 "synt.y"
+#line 45 "synt.y"
                                   {strcpy(sauvType,(yyvsp[0].str));}
 #line 1186 "synt.tab.c"
     break;
 
   case 19: /* ListeIdfs: idf vg ListeIdfs  */
-#line 49 "synt.y"
+#line 50 "synt.y"
                              {}
 #line 1192 "synt.tab.c"
     break;
 
   case 31: /* EXP: cst  */
-#line 64 "synt.y"
+#line 65 "synt.y"
                                         {if((yyvsp[0].entier)==0 && opr==3) 
  					{	printf("divison par 0\n");
 					return err;
@@ -1202,25 +1202,25 @@ yyreduce:
     break;
 
   case 32: /* OPERATEUR: plus  */
-#line 70 "synt.y"
+#line 71 "synt.y"
                 {opr=1;}
 #line 1208 "synt.tab.c"
     break;
 
   case 33: /* OPERATEUR: mult  */
-#line 70 "synt.y"
+#line 71 "synt.y"
                                 {opr=2;}
 #line 1214 "synt.tab.c"
     break;
 
   case 34: /* OPERATEUR: division  */
-#line 70 "synt.y"
+#line 71 "synt.y"
                                                     {opr=3;}
 #line 1220 "synt.tab.c"
     break;
 
   case 35: /* OPERATEUR: moins  */
-#line 70 "synt.y"
+#line 71 "synt.y"
                                                                      {opr=4;}
 #line 1226 "synt.tab.c"
     break;
@@ -1419,7 +1419,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 87 "synt.y"
+#line 88 "synt.y"
 
 main()
 {

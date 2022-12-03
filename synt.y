@@ -6,7 +6,7 @@ char sauvType[20];
 
 %union{
 int entier;
-char* str;
+char* str
 }
 
 %token <str>idf mc_langage mc_var dp pvg <str>mc_int <str>mc_float mc_bool vg mc_begin mc_end aff <entier>cst mc_const mc_if pt plus err mult division moins
